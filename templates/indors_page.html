@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <title>Внутрішня сторінка</title>
+</head>
+<body>
+    <h1>Ласкаво просимо, {{username}}</h1>
+    <p>Це захищена сторінка, доступна лише зареєстрованим користувачам.</p>
+
+    <h2>Зміна паролю</h2>
+    <form action="/changepassword" method="POST">
+        <label for="currentPassword">Поточний пароль:</label>
+        <input type="password" id="currentPassword" name="currentPassword" required>
+        <br>
+        <label for="newPassword">Новий пароль:</label>
+        <input type="password" id="newPassword" name="newPassword" required>
+        <br>
+        <label for="confirmPassword">Підтвердіть новий пароль:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+        <br>
+        <button type="submit">Змінити пароль</button>
+        <div id="messages">
+            {% if error %}
+                <div class="error-message">{{ error }}</div>
+            {% endif %}
+            {% if success_message %}
+                <div class="success-message">{{ success_message }}</div>
+            {% endif %}
+        </div>
+    </form>
+    <form action="/back_to_main" method="GET">
+        <button>На головну</button>
+    </form>
+</body>
+</html>
